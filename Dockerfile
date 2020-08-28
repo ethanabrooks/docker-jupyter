@@ -1,5 +1,4 @@
-FROM jupyter/scipy-notebook:17aba6048f44
-#VOLUME ['/jupyter']
+FROM jupyter/scipy-notebook
 WORKDIR /home/jovyan/
 COPY *.ipynb .
 COPY entrypoint.sh .
