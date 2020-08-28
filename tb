@@ -20,7 +20,7 @@ while getopts ":p:v:a:" opt; do
 done
 shift $((OPTIND -1))
 
-existing=$(docker ps -f name=tensorboard$port -q)
+existing=$(docker ps -f name=jupyter$port -q)
 if [[ $existing != "" ]]
 then
   echo docker kill $existing 
@@ -38,8 +38,8 @@ for v in ${volume_paths[@]}; do
   volume_args+=("-v $v:/log/$v")
 done
 my_ip=$(ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
-cmd="docker run --rm -itd --name tensorboard$port ${volume_args[@]}
-${other_args[@]} -p $my_ip:$port:6006 ethanabrooks/tensorboard"
+cmd="docker run --rm -itd --name jupyter$port ${volume_args[@]}
+${other_args[@]} -p $my_ip:$port:6006 ethanabrooks/jupyter"
 echo $cmd
 id=$(exec $cmd)
 echo docker logs -f $id
