@@ -1,12 +1,12 @@
 install: deb
-	cd build; sudo apt install --reinstall ./tb_0.1-1_all.deb
+	cd build; sudo apt install --reinstall ./plot_0.1-1_all.deb
 
 deb: docker clean
-	mkdir -p build/tb-0.1
-	cp tb build/tb-0.1
-	cd build/tb-0.1; \
+	mkdir -p build/plot-0.1
+	cp plot build/plot-0.1
+	cd build/plot-0.1; \
 		dh_make --indep --createorig; \
-		echo 'tb usr/bin' > debian/install; \
+		echo 'plot usr/bin' > debian/install; \
 		debuild -us -uc
 
 docker:
