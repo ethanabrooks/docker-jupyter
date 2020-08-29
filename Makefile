@@ -10,7 +10,7 @@ deb: docker clean
 		debuild -us -uc
 
 docker:
-	docker build --tag plot .
+	docker build --tag ethanabrooks/plot .
 
 clean:
 	rm -rf build
