@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-jupyter notebook
+cd /plot && jupyter notebook
