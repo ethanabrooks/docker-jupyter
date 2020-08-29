@@ -1,2 +1,2 @@
 #! /usr/bin/env bash
-cd /plot && jupyter notebook
+jupyter notebook --allow-root

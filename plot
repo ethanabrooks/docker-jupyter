@@ -35,10 +35,10 @@ then
 fi
 volume_args=()
 for v in ${volume_paths[@]}; do
-  volume_args+=("-v $v:/log/")
+  volume_args+=("-v $v:/home/jovyan/$(basename $v)")
 done
 my_ip=$(ip route get 8.8.8.8 | awk -F"src " 'NR==1{split($2,a," ");print a[1]}')
-cmd="docker run --rm -it --name plot$port ${volume_args[@]}
+cmd="docker run --rm -it --name plot$port ${volume_args[@]} --user root
 ${other_args[@]} -p $my_ip:$port:8888 ethanabrooks/plot"
 echo $cmd
 exec $cmd
